@@ -6,6 +6,10 @@ from selenium.webdriver.common.by import By
 import requests
 from bs4 import BeautifulSoup
 
+def sanitize_filename(filename):
+    # Replace invalid characters with underscores
+    return re.sub(r'[\\/*?:"<>|]', '_', filename)
+
 def get_youtube_title(video_url):
     try:
         # Make a GET request to the YouTube video URL
@@ -42,14 +46,15 @@ def extract_youtube_comments(video_url,video_title):
         usernames = driver.find_elements(By.CSS_SELECTOR, '#author-text')
         comment_list = [(user.text, comment.text) for user, comment in zip(usernames, comments)]
 
+        sanitized_title = sanitize_filename(video_title)
         # Save comments to CSV file
-        with open(f'{video_title}.csv', 'w', newline='', encoding='utf-8') as csvfile:
+        with open(f'{sanitized_title}.csv', 'w', newline='', encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(['Username', 'Comment'])
             for user, comment in comment_list:
                 writer.writerow([user, comment])
 
-        print(f'Comments extracted and saved to {video_title}.csv')
+        print(f'Comments extracted and saved to {sanitized_title}.csv')
 
     except Exception as e:
         print(f"An error occurred: {e}")
