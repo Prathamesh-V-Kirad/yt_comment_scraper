@@ -34,10 +34,11 @@ extract_youtube_comments(video_url, video_title)
 Feel free to adjust or expand upon it as needed!
 
 ## Note on Handling Errors
-- If you encounter errors such as "element not found" or "HTTP error", try the following:
-  - Check your internet connection and ensure that you have access to YouTube.
-  - Verify that the video URL is correct and the video is accessible publicly.
-  - Ensure that the Chrome WebDriver is installed correctly and compatible with your Chrome browser version.
-  - If the script fails due to changes in YouTube's HTML structure, you may need to update the CSS selectors used to locate elements such as comments and usernames.
-- If the video title contains emojis or special characters, it may cause encoding errors. Consider handling such cases by encoding the title appropriately or modifying the script to handle Unicode characters.
-- Always monitor the script execution and error logs to identify and address any issues promptly.
+- [ ] If you encounter errors such as "element not found" or "HTTP error", try the following:
+  - [ ] Check your internet connection and ensure that you have access to YouTube.
+  - [ ] Verify that the video URL is correct and the video is accessible publicly.
+  - [ ] Ensure that the Chrome WebDriver is installed correctly and compatible with your Chrome browser version.
+  - [ ] If the script fails due to changes in YouTube's HTML structure, you may need to update the CSS selectors used to locate elements such as comments and usernames.
+- [x] If the video title contains emojis or special characters, it may cause encoding errors. Consider handling such cases by encoding the title appropriately or modifying the script to handle Unicode characters. `solved this error using sanitized title function`
+- [ ] Always monitor the script execution and error logs to identify and address any issues promptly.
+
